@@ -1,0 +1,22 @@
+{
+  "name": "com.GGTools.DocReader",
+  "version": "1.0.0",
+  "displayName": "DocReader",
+  "description": "This package help you to read external file documents like CSV",
+  "unity": "Unity 6.0",
+  "documentationUrl": ".",
+  "changelogUrl": ".",
+  "licensesUrl": ".",
+ "keywords": [
+    "DocReader",
+    "Document Reader",
+    "GGTools",
+    "GGTools.DocReader",
+    "GGTools.ReadDocument"
+  ],
+  "author": {
+    "name": "Lucas Valverde",
+    "email": "lucashvfgomes@gmail.com",
+    "url": "https://lucashvfgomes.wixsite.com/my-site"
+  }
+}
