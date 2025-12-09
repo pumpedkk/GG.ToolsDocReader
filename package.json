@@ -1,5 +1,5 @@
 {
-  "name": "com.GGTools.DocReader",
+  "name": "com.ggtools.docreader",
   "version": "1.0.0",
   "displayName": "DocReader",
   "description": "This package help you to read external file documents like CSV",
