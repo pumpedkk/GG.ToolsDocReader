@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "displayName": "DocReader",
   "description": "This package help you to read external file documents like CSV",
-  "unity": "6000.x.x",
+  "unity": "6000.0",
  "keywords": [
     "DocReader",
     "Document Reader",
