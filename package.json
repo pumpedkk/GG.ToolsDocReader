@@ -4,9 +4,6 @@
   "displayName": "DocReader",
   "description": "This package help you to read external file documents like CSV",
   "unity": "Unity 6.0",
-  "documentationUrl": ".",
-  "changelogUrl": ".",
-  "licensesUrl": ".",
  "keywords": [
     "DocReader",
     "Document Reader",
