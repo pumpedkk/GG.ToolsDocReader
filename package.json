@@ -2,7 +2,7 @@
   "name": "com.ggtools.docreader",
   "version": "1.0.0",
   "displayName": "DocReader",
-  "description": "This package help you to read external file documents like CSV",
+  "description": "A versatile file-reading toolkit for Unity, offering high-level abstractions for accessing and parsing CSV and TXT documents from multiple storage locations. Includes utilities for normalized line extraction, CSV field splitting, dynamic text pagination, and fallback search logic across persistentDataPath, streamingAssetsPath, and Resources. Ideal for data-driven gameplay, configuration loading, localization pipelines, and editor tooling.",
   "unity": "6000.0",
  "keywords": [
     "DocReader",
