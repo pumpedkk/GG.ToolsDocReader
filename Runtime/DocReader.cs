@@ -1,7 +1,8 @@
-using UnityEngine;
-using System.IO;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using UnityEngine;
 
 
 namespace GGTools.FileReaders
@@ -212,52 +213,38 @@ namespace GGTools.FileReaders
 
         public static string[] CreatePage(this string text, int maxChar)
         {
-            List<string> returnString = new List<string>();
-            if (string.IsNullOrEmpty(text) || maxChar <= 0)
+            if (string.IsNullOrWhiteSpace(text) || maxChar <= 0)
+                return new[] { text };
+
+            List<string> pages = new List<string>();
+            int index = 0;
+
+            while (index < text.Length)
             {
-                returnString.Add(text);
-                return returnString.ToArray();
-            }
+                int length = Math.Min(maxChar, text.Length - index);
+                int breakIndex = index + length;
 
-            int lastPageInsert = 0;
-
-            while (lastPageInsert + maxChar <= text.Length)
-            {
-                int pageBreakIndex = lastPageInsert + maxChar;
-
-                // Volta até o último espaço antes do limite
-                while (pageBreakIndex > lastPageInsert && text[pageBreakIndex] != ' ')
+                // tenta quebrar no último espaço
+                if (breakIndex < text.Length && text[breakIndex] != ' ')
                 {
-                    pageBreakIndex--;
+                    int lastSpace = text.LastIndexOf(' ', breakIndex, length);
+                    if (lastSpace > index)
+                        breakIndex = lastSpace;
                 }
 
-                // Se não achou espaço, quebra mesmo assim (melhor que travar)
-                if (pageBreakIndex <= lastPageInsert)
-                    pageBreakIndex = lastPageInsert + maxChar;
-                if(lastPageInsert + pageBreakIndex > text.Length) 
-                {
-                    if (text.Substring(lastPageInsert) != "" && text.Substring(lastPageInsert) != " " && text.Substring(lastPageInsert) != "    ")
-                    {
-                        returnString.Add(text.Substring(lastPageInsert));
-                    }
-                    lastPageInsert = text.Length;
-                }
-                else 
-                {
-                    if (text.Substring(lastPageInsert, pageBreakIndex) != "" && text.Substring(lastPageInsert, pageBreakIndex) != " " && text.Substring(lastPageInsert, pageBreakIndex) != "    ")
-                    {
-                        returnString.Add(text.Substring(lastPageInsert, pageBreakIndex));
-                    }
-                    lastPageInsert = pageBreakIndex;
-                }
-                
+                int finalLength = breakIndex - index;
+
+                string page = text.Substring(index, finalLength).Trim();
+
+                if (!string.IsNullOrWhiteSpace(page))
+                    pages.Add(page);
+
+                index = breakIndex;
             }
-            if (text.Substring(lastPageInsert) != "" && text.Substring(lastPageInsert) != " " && text.Substring(lastPageInsert) != "    ")
-            {
-                returnString.Add(text.Substring(lastPageInsert));
-            }
-            return returnString.ToArray();
+
+            return pages.ToArray();
         }
+
     }
 
 }
